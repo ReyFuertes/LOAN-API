@@ -1,14 +1,15 @@
+import { GetBorrowerFilterDto } from './dto/get-borrower-dto';
 import { Borrower } from './borrowers.entity';
 import { BorrowersService } from './borrowers.service';
-import { Controller, Get, Post, Body, Param, ParseIntPipe, Delete, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, ParseIntPipe, Delete, Patch, Query } from '@nestjs/common';
 import { CreateBorrowerDto } from './dto/create-borrower-dto';
 
 @Controller('borrowers')
 export class BorrowersController {
   constructor(private borrowersService: BorrowersService) { }
   @Get()
-  getAll(): Promise<Borrower[]> {
-    return this.borrowersService.getAllBorrowers();
+  getAll(@Query() getBorrowerFilterDto: GetBorrowerFilterDto): Promise<Borrower[]> {
+    return this.borrowersService.getAllBorrowers(getBorrowerFilterDto);
   }
   @Post()
   create(@Body() createBorrowerDto: CreateBorrowerDto): Promise<Borrower> {

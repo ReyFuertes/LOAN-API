@@ -1,3 +1,4 @@
+import { GetBorrowerFilterDto } from './dto/get-borrower-dto';
 import { UpdateBorrowerDto } from './dto/update-borrower-dto';
 import { Borrower } from './borrowers.entity';
 import { BorrowersRepository } from './borrowers.repository';
@@ -8,11 +9,11 @@ import { BaseService } from 'src/base.service';
 
 @Injectable()
 export class BorrowersService extends BaseService<Borrower> {
-  constructor(@InjectRepository(BorrowersRepository) borrowersRepository: BorrowersRepository) {
+  constructor(@InjectRepository(BorrowersRepository) public borrowersRepository: BorrowersRepository) {
     super(borrowersRepository);
   }
-  async getAllBorrowers(): Promise<Borrower[]> {
-    return this.getAll();
+  async getAllBorrowers(getBorrowerFilterDto: GetBorrowerFilterDto): Promise<Borrower[]> {
+    return this.borrowersRepository.getFilterBorrowers(getBorrowerFilterDto)
   }
   async getById(id: number): Promise<Borrower> {
     const borrower = await this.get(id);
