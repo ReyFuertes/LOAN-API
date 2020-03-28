@@ -26,6 +26,6 @@ export class Borrower extends BaseEntity {
   spouse_contact_number: string;
   @Column({ nullable: true})
   spouse_address: string
-  @OneToMany(type => Application, application => application.borrower)
+  @OneToMany(type => Application, applications => applications.borrower)
   applications: Application[]
 }
