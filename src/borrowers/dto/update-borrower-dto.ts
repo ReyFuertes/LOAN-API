@@ -1,5 +1,5 @@
 export class UpdateBorrowerDto {
-  id: number;
+  id: string;
   firstname: string;
   lastname: string;
   middlename: string;

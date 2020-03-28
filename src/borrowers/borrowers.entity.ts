@@ -1,28 +1,29 @@
 
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated } from 'typeorm';
 
 @Entity()
 export class Borrower extends BaseEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  @Generated('uuid')
+  id: string;
   @Column()
   firstname: string;
   @Column()
   lastname: string;
-  @Column()
+  @Column({ nullable: true})
   middlename: string;
-  @Column()
+  @Column({ nullable: true})
   age: number;
-  @Column()
+  @Column({ nullable: true})
   gender: string;
-  @Column()
+  @Column({ nullable: true})
   contact_number: string;
-  @Column()
+  @Column({ nullable: true})
   address: string;
-  @Column()
+  @Column({ nullable: true})
   spouse_name: string;
-  @Column()
+  @Column({ nullable: true})
   spouse_contact_number: string;
-  @Column()
+  @Column({ nullable: true})
   spouse_address: string
 }

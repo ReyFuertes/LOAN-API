@@ -4,4 +4,9 @@ export class GetBorrowerFilterDto {
   @IsOptional()
   @IsNotEmpty()
   search: string;
+
+  @IsOptional()
+  take: number;
+  @IsOptional()
+  skip: number;
 }
