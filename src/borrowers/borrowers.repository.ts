@@ -24,7 +24,10 @@ export class BorrowersRepository extends Repository<Borrower> {
           .reduce((acc, [k, v]) => ({ ...acc, [c[0]]: v }), {})
         );
         //note: im just using orWhere so every criteria will match the database
-        query.orWhere(`${Object.keys(obj)} ilike :${Object.keys(obj)}`, obj)
+        let op: string = 'ilike';
+        if (+(Object.values(obj)[0])) op = '=';
+
+        query.orWhere(`${Object.keys(obj)} ${op} :${Object.keys(obj)}`, obj)
       });
     }
     const borrowers = await query
