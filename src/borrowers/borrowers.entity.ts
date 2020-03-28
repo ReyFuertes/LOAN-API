@@ -1,5 +1,5 @@
-
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated } from 'typeorm';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany } from 'typeorm';
+import { Application } from 'src/applications/applications.entity';
 
 @Entity()
 export class Borrower extends BaseEntity {
@@ -26,4 +26,6 @@ export class Borrower extends BaseEntity {
   spouse_contact_number: string;
   @Column({ nullable: true})
   spouse_address: string
+  @OneToMany(type => Application, application => application.borrower)
+  applications: Application[]
 }
