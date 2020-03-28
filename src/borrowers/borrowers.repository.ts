@@ -1,3 +1,4 @@
+import { sqlOp } from './../models/generic.model';
 import { GetBorrowerFilterDto } from './dto/get-borrower-dto';
 import { Borrower } from './borrowers.entity';
 import { Repository, EntityRepository } from 'typeorm';
@@ -24,8 +25,8 @@ export class BorrowersRepository extends Repository<Borrower> {
           .reduce((acc, [k, v]) => ({ ...acc, [c[0]]: v }), {})
         );
         //note: im just using orWhere so every criteria will match the database
-        let op: string = 'ilike';
-        if (+(Object.values(obj)[0])) op = '=';
+        let op: string = sqlOp.iLike;
+        if (+(Object.values(obj)[0])) op = sqlOp.eq;
 
         query.orWhere(`${Object.keys(obj)} ${op} :${Object.keys(obj)}`, obj)
       });
