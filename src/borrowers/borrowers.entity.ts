@@ -1,3 +1,4 @@
+import { Loan } from './../loans/loans.entity';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany } from 'typeorm';
 import { Application } from 'src/applications/applications.entity';
 
@@ -26,6 +27,9 @@ export class Borrower extends BaseEntity {
   spouse_contact_number: string;
   @Column({ nullable: true})
   spouse_address: string
-  @OneToMany(type => Application, applications => applications.borrower)
+
+  @OneToMany(() => Loan, loan => loan.borrower)
+  loans: Loan[];
+  @OneToMany(() => Application, applications => applications.borrower)
   applications: Application[]
 }

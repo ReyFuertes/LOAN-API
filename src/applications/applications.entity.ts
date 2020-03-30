@@ -18,6 +18,6 @@ export class Application extends BaseEntity {
 
   @OneToOne(() => CoMaker, comaker => comaker.application)
   comaker: CoMaker;
-  @ManyToOne(type => Borrower, borrower => borrower.applications)
+  @ManyToOne(() => Borrower, borrower => borrower.applications)
   public borrower: Borrower;
 }
