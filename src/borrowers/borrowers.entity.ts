@@ -25,8 +25,6 @@ export class Borrower extends BaseEntity {
   spouse_name: string;
   @Column({ nullable: true})
   spouse_contact_number: string;
-  @Column({ nullable: true})
-  spouse_address: string
 
   @OneToMany(() => Loan, loan => loan.borrower)
   loans: Loan[];
