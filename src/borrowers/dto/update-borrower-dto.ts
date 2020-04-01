@@ -9,5 +9,4 @@ export class UpdateBorrowerDto {
   address: string;
   spouse_name: string;
   spouse_contact_number: string;
-  spouse_address: string
 }
