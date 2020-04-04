@@ -1,6 +1,6 @@
+import { Borrower } from './entities/borrowers.entity';
 import { sqlOp } from './../models/generic.model';
 import { GetBorrowerDto } from './dto/get-borrower-dto';
-import { Borrower } from './borrowers.entity';
 import { Repository, EntityRepository } from 'typeorm';
 import _ = require("lodash");
 /**

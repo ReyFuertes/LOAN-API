@@ -1,5 +1,5 @@
+import { Borrower } from './entities/borrowers.entity';
 import { GetBorrowerDto } from './dto/get-borrower-dto';
-import { Borrower } from './borrowers.entity';
 import { BorrowersService } from './borrowers.service';
 import { Controller, Get, Post, Body, Param, ParseIntPipe, Delete, Patch, Query } from '@nestjs/common';
 import { CreateBorrowerDto } from './dto/create-borrower-dto';

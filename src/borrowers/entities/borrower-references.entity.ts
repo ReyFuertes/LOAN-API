@@ -1,5 +1,5 @@
-import { Borrower } from './../borrowers/borrowers.entity';
-import { Gender } from './../generic.models';
+import { Borrower } from './borrowers.entity';
+import { Gender } from './../../generic.models';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany, ManyToOne } from 'typeorm';
 
 @Entity()

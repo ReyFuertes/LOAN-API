@@ -1,5 +1,5 @@
-import { BorrowerReference } from './../borrower-references/borrower-references.entity';
-import { Loan } from './../loans/loans.entity';
+import { BorrowerReference } from './borrower-references.entity';
+import { Loan } from './../../loans/loans.entity';
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany, OneToOne } from 'typeorm';
 import { Application } from 'src/applications/applications.entity';
 

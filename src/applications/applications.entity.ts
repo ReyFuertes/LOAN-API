@@ -1,6 +1,6 @@
+import { Borrower } from './../borrowers/entities/borrowers.entity';
 import { CoMaker } from './../entities/comaker.entity';
 import { ApplicationStatus, PaymentTerm } from './../models/generic.model';
-import { Borrower } from './../borrowers/borrowers.entity';
 
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany, ManyToOne, OneToOne } from 'typeorm';
 

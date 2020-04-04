@@ -1,6 +1,6 @@
+import { Borrower } from './../borrowers/entities/borrowers.entity';
 import { PaymentTerm } from './../models/generic.model';
 import { Collector } from './../entities/collector.entity';
-import { Borrower } from './../borrowers/borrowers.entity';
 import { BaseEntity, PrimaryGeneratedColumn, Generated, Column, ManyToOne, ManyToMany, Entity } from 'typeorm';
 
 @Entity()

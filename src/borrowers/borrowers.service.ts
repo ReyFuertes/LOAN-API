@@ -1,6 +1,6 @@
+import { Borrower } from './entities/borrowers.entity';
 import { GetBorrowerDto } from './dto/get-borrower-dto';
 import { UpdateBorrowerDto } from './dto/update-borrower-dto';
-import { Borrower } from './borrowers.entity';
 import { BorrowersRepository } from './borrowers.repository';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBorrowerDto } from './dto/create-borrower-dto';
