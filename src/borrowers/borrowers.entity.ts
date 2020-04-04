@@ -1,5 +1,6 @@
+import { BorrowerReference } from './../borrower-references/borrower-references.entity';
 import { Loan } from './../loans/loans.entity';
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany } from 'typeorm';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, Generated, OneToMany, OneToOne } from 'typeorm';
 import { Application } from 'src/applications/applications.entity';
 
 @Entity()
@@ -25,6 +26,9 @@ export class Borrower extends BaseEntity {
   spouse_name: string;
   @Column({ nullable: true})
   spouse_contact_number: string;
+
+  @OneToMany(() => BorrowerReference, br => br.borrower)
+  borrower_references: BorrowerReference[];
 
   @OneToMany(() => Loan, loan => loan.borrower)
   loans: Loan[];

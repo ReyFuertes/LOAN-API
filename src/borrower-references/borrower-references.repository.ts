@@ -1,20 +1,19 @@
+import { BorrowerReference } from './borrower-references.entity';
 import { sqlOp } from './../models/generic.model';
-import { GetBorrowerDto } from './dto/get-borrower-dto';
-import { Borrower } from './borrowers.entity';
 import { Repository, EntityRepository } from 'typeorm';
 import _ = require("lodash");
-/**
- * custom query to the database will be performed here unless crud
- */
-@EntityRepository(Borrower)
-export class BorrowersRepository extends Repository<Borrower> {
-  async getAll(getBorrowerFilterDto: GetBorrowerDto): Promise<Borrower[]> {
+import { GetBorrowerRefenceDto } from './dto/get-borrower-reference-dto';
+
+@EntityRepository(BorrowerReference)
+export class BorrowerReferencesRepository extends Repository<BorrowerReference> {
+  async getAll(getBorrowerReferenceDto: GetBorrowerRefenceDto): Promise<BorrowerReference[]> {
     const query = this.createQueryBuilder('borrower');
-    _.mapValues(getBorrowerFilterDto, _.method('toLowerCase')); // convert values to lowercases
-    const where = getBorrowerFilterDto;
+    _.mapValues(getBorrowerReferenceDto, _.method('toLowerCase')); // convert values to lowercases
+    
+    const where = getBorrowerReferenceDto;
     const page = Object.assign({}, {
-      take: getBorrowerFilterDto.take,
-      skip: getBorrowerFilterDto.skip
+      take: getBorrowerReferenceDto.take,
+      skip: getBorrowerReferenceDto.skip
     });
     delete where.skip, where.take;
 
@@ -31,9 +30,10 @@ export class BorrowersRepository extends Repository<Borrower> {
         query.orWhere(`${Object.keys(obj)} ${op} :${Object.keys(obj)}`, obj)
       });
     }
+    
     const borrowers = await query
       .skip(page.skip).take(page.take) // pagination
-      .orderBy('borrower.id', 'DESC') // make sure new records on top
+      .orderBy('borrower_reference.id', 'DESC') // make sure new records on top
       .getMany();
     return borrowers;
   }

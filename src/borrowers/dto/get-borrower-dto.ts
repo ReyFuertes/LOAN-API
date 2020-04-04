@@ -1,12 +1,4 @@
+import { IGetDto } from './../../generic.models';
 import { IsOptional, IsNotEmpty } from 'class-validator';
 
-export class GetBorrowerFilterDto {
-  @IsOptional()
-  @IsNotEmpty()
-  search: string;
-
-  @IsOptional()
-  take: number;
-  @IsOptional()
-  skip: number;
-}
+export class GetBorrowerDto extends IGetDto {}

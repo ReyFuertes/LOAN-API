@@ -1,4 +1,4 @@
-import { GetBorrowerFilterDto } from './dto/get-borrower-dto';
+import { GetBorrowerDto } from './dto/get-borrower-dto';
 import { UpdateBorrowerDto } from './dto/update-borrower-dto';
 import { Borrower } from './borrowers.entity';
 import { BorrowersRepository } from './borrowers.repository';
@@ -12,8 +12,8 @@ export class BorrowersService extends BaseService<Borrower> {
   constructor(@InjectRepository(BorrowersRepository) public borrowersRepository: BorrowersRepository) {
     super(borrowersRepository);
   }
-  async getAllBorrowers(getBorrowerFilterDto: GetBorrowerFilterDto): Promise<Borrower[]> {
-    return this.borrowersRepository.getFilterBorrowers(getBorrowerFilterDto)
+  async getAllBorrowers(gbDto: GetBorrowerDto): Promise<Borrower[]> {
+    return this.borrowersRepository.getAll(gbDto)
   }
   async getById(id: number): Promise<Borrower> {
     const borrower = await this.get(id);
@@ -22,11 +22,11 @@ export class BorrowersService extends BaseService<Borrower> {
     }
     return borrower;
   }
-  async createBorrower(createBorrowerDto: CreateBorrowerDto): Promise<Borrower> {
-    return this.create(createBorrowerDto);
+  async createBorrower(cbDto: CreateBorrowerDto): Promise<Borrower> {
+    return this.create(cbDto);
   }
-  async updateBorrower(updateBorrowerDto: UpdateBorrowerDto): Promise<Borrower> {
-    return this.update(updateBorrowerDto);
+  async updateBorrower(ubDto: UpdateBorrowerDto): Promise<Borrower> {
+    return this.update(ubDto);
   }
   async deleteById(id: number): Promise<void> {
     await this.delete(id);
